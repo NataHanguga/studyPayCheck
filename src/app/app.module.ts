@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { MainComponent } from './components/main/main.component';
 import { ListComponent } from './components/list/list.component';
 import { TableComponent } from './components/table/table.component';
+import { HttpClientModule } from '@angular/common/http';
+import { SearchTextPipe } from './pipes/search-text.pipe';
+import { FormsModule } from '@angular/forms';
 import { MenuComponent } from './components/menu/menu.component';
 
 @NgModule({
@@ -14,11 +17,14 @@ import { MenuComponent } from './components/menu/menu.component';
     MainComponent,
     ListComponent,
     TableComponent,
+    SearchTextPipe,
     MenuComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

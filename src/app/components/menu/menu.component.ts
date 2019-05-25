@@ -16,5 +16,4 @@ export class MenuComponent implements OnInit {
   goTo() {
     return this.router.navigate(['/']);
   }
-
 }

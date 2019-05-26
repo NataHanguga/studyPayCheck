@@ -1,0 +1,132 @@
+<div class="list">
+
+  <app-menu></app-menu>
+
+  <div class="container">
+      <h1>Student list</h1>
+  
+      <div class="row">
+  
+        <aside class="col-lg-5">
+  
+          <div class="card" *ngFor="let teacher of studentListByTeacher">
+  
+            <header class="card-header">
+              <button type="button" class="btn btn-lg btn-info btn-block collapsed" (click)="open = teacher.teacher">{{teacher.teacher}}</button>
+            </header>
+  
+            <div class="collapse " *ngIf=teacher.teacher>
+              <article class="card-body">
+  
+                <div class="container positions">
+  
+                  <ul>
+                    <li class="pos-card" id="pos_2">
+                      <div class="content">
+                        <div class="title">Sales Manager</div>
+                        <div class="dept">Sales</div>
+                        <div class="date">April 21</div>
+                        <div class="refer">Refer</div>
+                      </div>
+                      <ul class="desc">
+                        <li>Determines annual unit and gross-profit plans by implementing marketing strategies; analyzing
+                          trends and
+                          results.</li>
+                        <li>Implements national sales programs by developing field sales action plans.</li>
+                        <li>Establishes and adjusts selling prices by monitoring costs, competition, and supply and
+                          demand.</li>
+                      </ul>
+                    </li>
+                    <li class="pos-card" id="pos_3">
+                      <div class="content">
+                        <div class="title">Business Analyst</div>
+                        <div class="refer">Refer</div>
+                        <div class="dept">Sales</div>
+                        <div class="date">April 21</div>
+                      </div>
+                      <ul class="desc">
+                        <li>Ticher</li>
+                        <li>Contract</li>
+                        <li>zzz</li>
+                      </ul>
+                    </li>
+                  </ul>
+  
+                </div>
+  
+  
+              </article>
+              <!-- card-body.// -->
+            </div>
+            <!-- collapse .// -->
+          </div>
+          <!-- card.// -->
+  
+        </aside> <!-- col.// -->
+  
+      </div>
+      <!-- row.// -->
+  
+  
+    </div>
+  <!--container end.//-->
+
+  <div class="addButton btn btn-success" data-toggle="modal" data-target="#addModal">Add New Student</div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+        </div>
+
+        <form [formGroup]="studentItem">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" formControlName="fullName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.fullName.errors }" />
+            <div *ngIf="submitted && f.fullName.errors" class="invalid-feedback">
+              <div *ngIf="f.fullName.errors.required">First Name is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Student Type</label>
+            <select id="studentType"
+              class="form-control"
+              formControlName="studentType"
+              (change)="selectItem($event)"
+              mdbValidate required >
+          <option *ngFor="let type of typeList" [value]=type>
+          {{type}}
+          </option>
+      </select>
+            <div *ngIf="submitted && f.studentType.errors" class="invalid-feedback">
+              <div *ngIf="f.studentType.errors.required">First Name is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Student`s Teacher FullName</label>
+            <input type="text" formControlName="teacher" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.teacher.errors }" />
+            <div *ngIf="submitted && f.teacher.errors" class="invalid-feedback">
+              <div *ngIf="f.teacher.errors.required">First Name is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Start Stady Data</label>
+            <input type="date" formControlName="date" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.date.errors }" />
+            <div *ngIf="submitted && f.date.errors" class="invalid-feedback">
+              <div *ngIf="f.date.errors.required">First Name is required</div>
+            </div>
+          </div>
+        </form>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="onSubmit()">Save changes</button>
+          <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,178 @@
+<div class="list">
+
+  <app-menu></app-menu>
+
+  <div class="container">
+
+    <div class="row">
+
+      <aside class="col-sm-4">
+        <h1>Student list</h1>
+
+
+        <div class="card">
+          <header class="card-header">
+            <button type="button" class="btn btn-lg btn-info btn-block collapsed" data-toggle="collapse"
+                data-target="#collapse1" >Teacher I</button>
+          </header>
+          <div class="collapse " id="collapse1">
+            <article class="card-body">
+
+              <article class="list-group-item">
+                <header class="filter-header">
+                  <a href="#" data-toggle="collapse" data-target="#collapse11">
+                      <i class="icon-action fa fa-chevron-down"></i>
+                      <h6 class="title">Nata Hanguga</h6>
+                    </a>
+                </header>
+                <div class="filter-content collapse" id="collapse11">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt deserunt mollit anim id est laborum. </p>
+                </div>
+              </article>
+
+              <article class="list-group-item">
+                <header class="filter-header">
+                  <a href="#" data-toggle="collapse" data-target="#collapse12">
+                      <i class="icon-action fa fa-chevron-down"></i>
+                      <h6 class="title">Nikolay Gumenyuk </h6>
+                    </a>
+                </header>
+                <div class="filter-content collapse" id="collapse12">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt deserunt mollit anim id est laborum. </p>
+                </div>
+              </article>
+
+            </article>
+            <!-- card-body.// -->
+          </div>
+          <!-- collapse .// -->
+        </div>
+        <!-- card.// -->
+
+
+        <div class="card">
+          <header class="card-header">
+            <button type="button" class="btn btn-lg btn-info btn-block collapsed" data-toggle="collapse"
+                data-target="#collapse2">Teacher I</button>
+          </header>
+          <div class="collapse" id="collapse2">
+            <article class="card-body">
+
+              <article class="list-group-item">
+                <header class="filter-header">
+                  <a href="#" data-toggle="collapse" data-target="#collapse21">
+                      <i class="icon-action fa fa-chevron-down"></i>
+                      <h6 class="title">Second heading </h6>
+                    </a>
+                </header>
+                <div class="filter-content collapse" id="collapse21">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt deserunt mollit anim id est laborum. </p>
+                </div>
+              </article>
+
+              <article class="list-group-item">
+                <header class="filter-header">
+                  <a href="#" data-toggle="collapse" data-target="#collapse22">
+                      <i class="icon-action fa fa-chevron-down"></i>
+                      <h6 class="title">Second heading </h6>
+                    </a>
+                </header>
+                <div class="filter-content collapse" id="collapse22">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt deserunt mollit anim id est laborum. </p>
+                </div>
+              </article>
+
+            </article>
+            <!-- card-body.// -->
+          </div>
+          <!-- collapse .// -->
+        </div>
+        <!-- card.// -->
+
+      </aside> <!-- col.// -->
+
+    </div>
+    <!-- row.// -->
+
+  </div>
+  <!--container end.//-->
+
+  <div class="addButton btn btn-success" data-toggle="modal" data-target="#addModal">Add New Student</div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+        </div>
+
+        <form [formGroup]="studentItem">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" formControlName="fullName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.fullName.errors }" />
+            <div *ngIf="submitted && f.fullName.errors" class="invalid-feedback">
+              <div *ngIf="f.fullName.errors.required">First Name is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+              <label>Student Type</label>
+              <select id="studentType"
+              class="form-control"
+              formControlName="studentType"
+              (change)="selectItem($event)"
+              mdbValidate required >
+          <option *ngFor="let type of typeList" [value]=type>
+          {{type}}
+          </option>
+      </select>
+            <!--
+            <input type="text" formControlName="studentType" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.studentType.errors }" /> -->
+            <div *ngIf="submitted && f.studentType.errors" class="invalid-feedback">
+              <div *ngIf="f.studentType.errors.required">First Name is required</div>
+            </div>
+          </div>
+          <!--  <div class="md-form ">
+              <div for="category" data-error="wrong" data-success="right">Category</div>
+              <select id="category"
+                      class="form-control"
+                      formControlName="category"
+                      (change)="selectItem($event)"
+                      mdbValidate required >
+                  <option *ngFor="let grade of gradeList" [value]=grade.position>
+                  {{grade.position}}
+                  </option>
+              </select>
+              <mdb-error *ngIf="category.value === null || category.value.length === 0">Category invalid</mdb-error>
+              <mdb-success *ngIf="category.valid && (category.dirty || category.touched)">Category valid</mdb-success>
+            </div> -->
+          <div class="form-group">
+            <label>Student`s Teacher FullName</label>
+            <input type="text" formControlName="teacher" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.teacher.errors }" />
+            <div *ngIf="submitted && f.teacher.errors" class="invalid-feedback">
+              <div *ngIf="f.teacher.errors.required">First Name is required</div>
+            </div>
+          </div>
+            <div class="form-group">
+                <label>Start Stady Data</label>
+                <input type="date" formControlName="date" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.date.errors }" />
+                <div *ngIf="submitted && f.date.errors" class="invalid-feedback">
+                  <div *ngIf="f.date.errors.required">First Name is required</div>
+                </div>
+              </div>
+        </form>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="onSubmit()">Save changes</button>
+          <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

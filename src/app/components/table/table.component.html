@@ -1,0 +1,38 @@
+<div class="container">
+    <app-menu></app-menu>
+    <h2>Student Table</h2>
+  <table class="border table one">
+    <thead>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Teacher Name</th>
+      <th scope="col">Student Type</th>
+      <th scope="col">Pay Check</th>
+
+    </thead>
+    <tbody>
+      <tr class="border" *ngFor="let item of studentsData; let i = index;">
+        <th>{{i+1}}</th>
+        <td scope="row">{{item.fullName}}</td>
+        <td scope="row">{{item.teacherName}}</td>
+        <td scope="row">{{item.studentType}}</td>
+        <table class="table two">
+            <tr class="border">
+                <th>Month</th>
+                  <td *ngFor="let data of item.pay; let i = index;" scope="col">{{data.studyMonth+1% 12}}</td>
+              </tr>
+          <tr class="border">
+            <th>Price</th>
+              <td *ngFor="let data of item.pay" scope="col">{{data.price}}</td>
+          </tr>
+          <tr class="border">
+              <th>Is Payed</th>
+                <td *ngFor="let data of item.pay" scope="col">{{data.payed}}</td>
+            </tr>
+         
+        </table>
+
+      </tr>
+    </tbody>
+  </table>
+</div>

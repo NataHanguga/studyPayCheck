@@ -1,0 +1,17 @@
+<label>
+    <input type='checkbox'>
+    <span class='menu'>
+      <span class='hamburger'></span>
+    </span>
+    <ul>
+      <li>
+        <a (click)="goTo()">Home</a>
+      </li>
+      <li>
+        <a [routerLink]="[ '/list' ]" routerLinkActive="active">List</a>
+      </li>
+      <li>
+        <a [routerLink]="[ '/table' ]" routerLinkActive="active" >Table</a>
+      </li>
+    </ul>
+</label>

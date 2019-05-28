@@ -1,0 +1,30 @@
+.container{
+  min-width: 100vw;
+  background-color: rgba(22, 22, 22, 0.123);
+  height: 100vh;
+  text-align: center;
+}
+
+.table{
+  max-width: 80%;
+  /* margin: 20px 0px; */
+  /* min-height: 100%; */
+  padding-top: 0px;
+  /* boeder: 1px #000 solid; */
+
+}
+th{
+  text-align: center;
+}
+.two {
+  height: 110%;
+  min-width: 100%;
+  
+}
+.one{
+  margin: 50px 10%;
+}
+
+h2{
+  margin: 20px 0;
+}
